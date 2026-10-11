@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A README layout study for AI Genealogy, comparing original and shorter illustrated banners.">
+  <title>AI Genealogy · README layout</title>
+  <style>
+    :root{color-scheme:light;--ink:#1f2328;--muted:#59636e;--border:#d1d9e0;--green:#073c28;--paper:#fffef4;--banner-ratio:5}
+    *{box-sizing:border-box}
+    html{scroll-padding-top:132px;scroll-behavior:smooth}
+    body{margin:0;background:#f6f8fa;color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+    a{color:#0969da;text-underline-offset:3px}
+    a:hover{text-decoration-thickness:2px}
+    a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #4c805f;outline-offset:4px}
+    .skip{position:fixed;left:16px;top:-100px;background:white;padding:12px;z-index:10}
+    .skip:focus{top:12px}
+    .review-bar{position:sticky;top:0;z-index:2;background:#ffffffed;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+    .review-inner{max-width:1064px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .review-title{font-size:14px;font-weight:650;line-height:1.4}
+    .review-title small{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:3px}
+    fieldset{margin:0;padding:0;border:0;min-width:0}
+    legend{font-size:11px;color:var(--muted);margin-bottom:5px;padding:0}
+    .ratios{display:flex;padding:3px;gap:3px;background:#f0f3f1;border:1px solid #d2ded5;border-radius:8px}
+    .ratio-option{position:relative;cursor:pointer}
+    .ratio-option input{position:absolute;opacity:0;width:100%;height:100%;margin:0;inset:0;cursor:pointer}
+    .ratio-option span{display:block;white-space:nowrap;font-size:12px;line-height:1.4;padding:7px 11px;border-radius:5px;color:#435b4c}
+    .ratio-option input:checked+span{background:var(--green);color:white}
+    .ratio-option input:focus-visible+span{outline:3px solid #7da38b;outline-offset:2px}
+    .shell{max-width:1012px;width:calc(100% - 48px);margin:28px auto 64px}
+    .repo-name{font-size:15px;margin:0 0 15px;color:var(--muted)}
+    .repo-name strong{font-weight:600;color:var(--ink)}
+    .readme{background:#fff;border:1px solid var(--border);border-radius:7px;overflow:hidden}
+    .file-header{border-bottom:1px solid var(--border);padding:12px 24px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;gap:12px}
+    .file-header span:last-child{font-size:12px;font-weight:400;color:var(--muted)}
+    .markdown-body{padding:32px}
+    .hero{width:100%;height:auto;display:block;aspect-ratio:3/1;background:var(--paper)}
+    h1{font-size:28px;line-height:1.3;letter-spacing:-.03em;font-weight:650;margin:27px 0 13px}
+    p{margin:0 0 16px}
+    .lead{font-size:17px;max-width:770px}
+    .toc{font-size:14px;display:flex;flex-wrap:wrap;gap:6px 20px;margin:23px 0 32px;padding-bottom:26px;border-bottom:1px solid #d8dee4}
+    .toc a{color:var(--green)}
+    section{scroll-margin-top:12px}
+    h2{font-size:23px;line-height:1.3;letter-spacing:-.015em;margin:28px 0 14px;font-weight:650}
+    h3{font-size:18px;margin:24px 0 10px;font-weight:600}
+    ul,ol{padding-left:26px;margin:0 0 20px}
+    li+li{margin-top:5px}
+    .example{border-left:3px solid #719074;padding:6px 0 6px 18px;color:#44534b;margin:22px 0 30px;max-width:840px}
+    .example p{margin:0}
+    .banner{display:block;position:relative;aspect-ratio:var(--banner-ratio)/1;overflow:hidden;margin:38px 0 23px;background:var(--paper)}
+    .banner img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% var(--focus,50%)}
+    .banner h2{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip-path:inset(50%)}
+    .newspapers{--focus:37%}
+    .free-sources{--focus:42%}
+    .sample-note{font-size:13px;color:var(--muted);background:#f6f8fa;border:1px solid #e3e8ed;padding:12px 15px;border-radius:5px;margin:26px 0}
+    .table-wrap{overflow:auto;margin:18px 0 24px}
+    table{width:100%;border-collapse:collapse;font-size:15px}
+    th,td{padding:11px 13px;border:1px solid #d1d9e0;vertical-align:top;text-align:left}
+    th{background:#f6f8fa;font-weight:600}
+    th:first-child{width:25%}
+    .closing{border-top:1px solid #d8dee4;margin-top:30px;padding-top:24px}
+    details{font-size:13px;color:var(--muted);margin-top:24px}
+    summary{cursor:pointer;color:var(--green);font-weight:600}
+    details p{margin:12px 0}
+    .review-footer{font-size:12px;color:var(--muted);line-height:1.5;margin:14px 0 0}
+    noscript p{background:#fff4ce;padding:12px;margin:0}
+    @media(max-width:640px){
+      .review-inner{padding:12px 16px;align-items:flex-start;gap:12px;flex-wrap:wrap}
+      .review-title small{max-width:260px}
+      .ratios{gap:2px}.ratio-option span{padding:7px 9px}
+      .shell{width:100%;margin:20px 0 32px}.repo-name{padding:0 16px}
+      .readme{border-left:0;border-right:0;border-radius:0}.file-header{padding:12px 16px}
+      .markdown-body{padding:20px 16px}h1{font-size:25px}h2{font-size:22px}
+      .lead{font-size:16px}.toc{gap:7px 16px}.banner{margin-top:30px}
+      .review-footer{padding:0 16px}.table-wrap{font-size:14px}th,td{padding:9px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{.review-bar,.repo-name,.review-footer,.sample-note{display:none}.shell{width:100%;margin:0;max-width:none}.readme{border:0}.markdown-body{padding:0}.banner{break-inside:avoid}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#readme">Skip to the README</a>
+<header class="review-bar">
+  <div class="review-inner">
+    <div class="review-title">AI Genealogy · README layout<small>Sample copy. The headline stays at 3:1.</small></div>
+    <fieldset>
+      <legend>Section banner height</legend>
+      <div class="ratios">
+        <label class="ratio-option"><input type="radio" name="ratio" value="3"><span>Original · 3:1</span></label>
+        <label class="ratio-option"><input type="radio" name="ratio" value="5" checked><span>Compact · 5:1</span></label>
+        <label class="ratio-option"><input type="radio" name="ratio" value="6"><span>Slim · 6:1</span></label>
+      </div>
+    </fieldset>
+  </div>
+</header>
+<noscript><p>The compact 5:1 layout is shown. Enable JavaScript to compare banner heights.</p></noscript>
+<main class="shell">
+  <p class="repo-name">tjqscott / <strong>ai_genealogy</strong></p>
+  <article class="readme" id="readme">
+    <div class="file-header"><span>README.md</span><span>Layout draft</span></div>
+    <div class="markdown-body">
+      <img class="hero" src="{{image:01-headline.png}}" width="2400" height="800" alt="AI Genealogy. A green neural network branches into a leafy family tree with archival portraits.">
+      <h1>Follow your family history. Keep the evidence.</h1>
+      <p class="lead">Use an AI assistant to plan searches, read records and follow the questions your family tree leaves open. Keep the sources beside the findings, so you can check a conclusion and pick up the research another day.</p>
+      <nav class="toc" aria-label="README sections"><a href="#start">Get started</a><a href="#records">Records</a><a href="#newspapers">Newspapers</a><a href="#access">Free sources and trials</a></nav>
+
+      <section id="start">
+        <h2>Start with one question</h2>
+        <p>A name, a date and a place are enough to begin a search. You might want to identify someone in a census, explain a move between towns or find out whether two records describe the same person.</p>
+        <ol><li>Bring the records you already have and say what you want to find out.</li><li>Ask your assistant to compare the possible matches and suggest the next search.</li><li>Save the sources, the unresolved questions and the candidates you ruled out.</li></ol>
+        <blockquote class="example"><p>“These two census entries may describe the same person. Compare the ages, addresses and family members, then tell me what record would help us decide.”</p></blockquote>
+      </section>
+
+      <section id="records" aria-labelledby="records-title">
+        <div class="banner"><h2 id="records-title">The records behind your tree.</h2><img src="{{image:02-documents.png}}" width="2172" height="724" alt="" loading="lazy"></div>
+        <p>A transcript helps you find a record. The original page can tell you more: a relationship column, a witness, a previous address or a note in the margin.</p>
+        <p>Keep what the document says separate from what you think it means. A useful research note should make it easy to see the evidence for a match, the reasons to doubt it and what to check next.</p>
+        <h3>Leave something you can return to</h3>
+        <ul><li>The record, its reference and where you found it.</li><li>The details that support the match, including anything that does not fit.</li><li>The next question, even when the answer is still “we don’t know”.</li></ul>
+      </section>
+
+      <section id="newspapers" aria-labelledby="newspapers-title">
+        <div class="banner newspapers"><h2 id="newspapers-title">Find them in the papers.</h2><img src="{{image:03-newspapers.png}}" width="2172" height="724" alt="" loading="lazy"></div>
+        <p>Newspapers can add the everyday detail that a family tree misses. A wedding notice might name relatives, a local report might give an occupation, and an obituary might point you towards an earlier home.</p>
+        <p>Search a few spellings, initials and nearby places. Then read the page around a promising result. A familiar name or photograph is a lead to check against the rest of the evidence.</p>
+        <blockquote class="example"><p>“Look for this surname in the local paper around the marriage date. Try initials and spelling variations, and keep the date, page and title for anything useful.”</p></blockquote>
+      </section>
+
+      <section id="access" aria-labelledby="access-title">
+        <div class="banner free-sources"><h2 id="access-title">Free sources first.</h2><img src="{{image:04-free-sources.png}}" width="2172" height="724" alt="" loading="lazy"></div>
+        <p>Start with the sources you can already use. Before paying for access, make a short list of the records you need and the questions they might answer.</p>
+        <div class="table-wrap"><table><thead><tr><th scope="col">Access</th><th scope="col">A useful starting point</th></tr></thead><tbody>
+          <tr><th scope="row">Free sources</th><td>Search indexes such as FreeBMD, FreeREG and FreeCEN. Coverage and access to original images vary.</td></tr>
+          <tr><th scope="row">Free trials</th><td>Prepare your searches first. Check which collections are included, the renewal terms and the cancellation date.</td></tr>
+          <tr><th scope="row">Paid records</th><td>Identify the exact record and what it could resolve before ordering a certificate or archive copy.</td></tr>
+        </tbody></table></div>
+        <p>An AI subscription does not include access to genealogy websites. Your assistant can help organise the search; you decide what to buy and what to add to your tree.</p>
+      </section>
+
+      <div class="closing">
+        <h2>Make the next session easier</h2>
+        <p>Finish with the findings, the open questions and the next useful step. A family-history project can take years. It should not take hours to remember where you left it.</p>
+      </div>
+      <aside class="sample-note">This is a design preview with sample README copy. Installation instructions and links to the research guides will be added when the package is published.</aside>
+      <details>
+        <summary>About the artwork and this preview</summary>
+        <p>The headline is the approved design. The three section banners use the same original PNGs at every setting; only the visible height changes. Compact crops are layout studies, so parts of the surrounding paper and leaves are deliberately outside the frame.</p>
+        <p>The family connections, documents and newspaper layouts are illustrative. The headline uses photographs from the Library of Congress C. M. Bell collection. The newspaper portraits are generated treatments of archival references, not unaltered scans or evidence of a family relationship.</p>
+        <p>Source information: <a href="https://www.loc.gov/free-to-use/portrait-photos-19th-century/">Library of Congress portrait collection</a>, <a href="https://www.freeukgenealogy.org.uk/about/">Free UK Genealogy</a>, <a href="https://www.britishnewspaperarchive.com/blog/a-complete-list-of-our-free-to-view-newspaper-pages">British Newspaper Archive free pages</a> and <a href="https://help.ancestry.co.uk/hc/en-gb/articles/53933302779539-Ancestry-Free-Trials">Ancestry trial terms</a>. Check providers for current access conditions.</p>
+      </details>
+    </div>
+  </article>
+  <p class="review-footer" id="layout-status" role="status">Compact 5:1 section banners. Original 3:1 headline.</p>
+</main>
+<script>
+  const controls = [...document.querySelectorAll('input[name="ratio"]')];
+  const labels = {'3': 'Original', '5': 'Compact', '6': 'Slim'};
+  function applyRatio(value) {
+    if (!Object.hasOwn(labels, value)) return;
+    document.documentElement.style.setProperty('--banner-ratio', value);
+    controls.forEach(control => { control.checked = control.value === value; });
+    document.getElementById('layout-status').textContent = `${labels[value]} ${value}:1 section banners. Original 3:1 headline.`;
+  }
+  const initial = new URLSearchParams(location.search).get('ratio');
+  if (initial) applyRatio(initial);
+  controls.forEach(control => control.addEventListener('change', () => applyRatio(control.value)));
+</script>
+</body>
+</html>
