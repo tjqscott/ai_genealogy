@@ -8,7 +8,7 @@ This repository is being prepared. The [README layout study](docs/README.md) bri
 
 ## View the layout
 
-Download this repository and open `docs/index.html` in a browser. The headline remains at 3:1; the section banners can be switched between 3:1, 5:1 and 6:1.
+[Open the live mock page](https://tjqscott.github.io/ai_genealogy/), or download this repository and open `docs/index.html` in a browser. The headline remains at 3:1; the section banners can be switched between 3:1, 5:1 and 6:1.
 
 To edit the page, change `docs/index.template.html` and rebuild:
 
