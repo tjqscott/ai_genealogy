@@ -23,4 +23,4 @@ The final PNGs are in `assets/`. The image-generation tool returns a 3:1 canvas,
 
 See [artwork credits](ARTWORK.md) for portrait references and the distinction between archive photographs and generated illustrations.
 
-GitHub Pages currently publishes the `/docs` directory from `docs/readme-layout`, so the draft can be reviewed before merging. After the PR is merged, switch the Pages source to `main` before deleting the branch.
+GitHub Pages publishes the `/docs` directory from `main`. Updates pushed to `main` rebuild the live preview.
