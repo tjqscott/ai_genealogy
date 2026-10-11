@@ -4,6 +4,7 @@ import argparse
 import base64
 from pathlib import Path
 import re
+import struct
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -16,10 +17,18 @@ def render(embed=False):
         source = ROOT / "docs/assets" / name
         if not source.is_file() or source.suffix != ".png":
             raise ValueError(f"Missing PNG asset: {name}")
+        image = source.read_bytes()
+        if image[:8] != b"\x89PNG\r\n\x1a\n":
+            raise ValueError(f"Not a PNG asset: {name}")
+        width, height = struct.unpack(">II", image[16:24])
+        if width != 5 * height:
+            raise ValueError(f"Banner must be exactly 5:1: {name} is {width} x {height}")
         value = "assets/" + name
         if embed:
-            value = "data:image/png;base64," + base64.b64encode(source.read_bytes()).decode("ascii")
+            value = "data:image/png;base64," + base64.b64encode(image).decode("ascii")
         page = page.replace("{{image:" + name + "}}", value)
+        page = page.replace("{{width:" + name + "}}", str(width))
+        page = page.replace("{{height:" + name + "}}", str(height))
     if "{{" in page:
         raise ValueError("Unresolved template value")
     return page
