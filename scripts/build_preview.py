@@ -2,6 +2,7 @@
 
 import argparse
 import base64
+import hashlib
 from pathlib import Path
 import re
 import struct
@@ -23,7 +24,7 @@ def render(embed=False):
         width, height = struct.unpack(">II", image[16:24])
         if width != 5 * height:
             raise ValueError(f"Banner must be exactly 5:1: {name} is {width} x {height}")
-        value = "assets/" + name
+        value = "assets/" + name + "?v=" + hashlib.sha256(image).hexdigest()[:12]
         if embed:
             value = "data:image/png;base64," + base64.b64encode(image).decode("ascii")
         page = page.replace("{{image:" + name + "}}", value)
